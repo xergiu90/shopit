@@ -1,7 +1,6 @@
 <FlexboxLayout class="page">
     <StackLayout class="form">
         <Image class="logo" src="~/images/logo.png"></Image>
-        <Label class="header" text="APP NAME"></Label>
 
         <PreviousNextView>
             <GridLayout rows="auto, auto, auto">
@@ -9,8 +8,8 @@
                     <TextField class="input" hint="Email" [isEnabled]="!processing"
                         keyboardType="email" autocorrect="false"
                         autocapitalizationType="none" [(ngModel)]="user.email"
+                        placeholder="SS"
                         returnKeyType="next" (returnPress)="focusPassword()"></TextField>
-                    <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
 
                 <StackLayout row="1" class="input-field">
@@ -18,7 +17,6 @@
                         hint="Password" secure="true" [(ngModel)]="user.password"
                         [returnKeyType]="isLoggingIn ? 'done' : 'next'"
                         (returnPress)="focusConfirmPassword()"></TextField>
-                    <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
 
                 <StackLayout row="2" *ngIf="!isLoggingIn" class="input-field">
