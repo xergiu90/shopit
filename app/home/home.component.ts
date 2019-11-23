@@ -1,3 +1,4 @@
+import { ProductService } from './../shared/products.service';
 import { Page } from 'tns-core-modules/ui/page';
 
 import { RouterExtensions } from "nativescript-angular/router";
@@ -32,7 +33,9 @@ export class HomeComponent implements OnInit {
     animationCurve = AnimationCurve.cubicBezier(.38, .47, 0, 1);
     prevDeltaX: number = 0;
 
-    constructor(private page: Page,private userService: UserService, private routerExtensions: RouterExtensions) {
+    public cartItems= [];
+
+    constructor(private page: Page,private userService: UserService, private routerExtensions: RouterExtensions, private productService:ProductService) {
         this.page.actionBarHidden = true;
     }
 
@@ -43,13 +46,13 @@ export class HomeComponent implements OnInit {
     tabList: { text: string, icon?: string, color?: string, backgroundColor: string, fadeColor?: string }[] = [
         { text: String.fromCharCode(0xf217), backgroundColor: '#5B37B7', color: '#000' },
         { text: String.fromCharCode(0xf1da), backgroundColor: '#E6A938', color: '#000' },
-        { text: String.fromCharCode(0xf259), backgroundColor: '#C9449D', color: '#000' },
-        { text: String.fromCharCode(0xf1d8), backgroundColor: '#4195AA', color: '#000' },
-        { text: String.fromCharCode(0xf073), backgroundColor: '#4A9F6E', color: '#000' }
+        { text: String.fromCharCode(0xf011), backgroundColor: '#C9449D', color: '#000' },
+        { text: String.fromCharCode(0xf1da), backgroundColor: '#E6A938', color: '#000' },
+        { text: String.fromCharCode(0xf011), backgroundColor: '#C9449D', color: '#000' }
     ];
 
-    currentTabIndex: number = 2;
-    defaultSelected: number = 2;
+    currentTabIndex: number = 0;
+    defaultSelected: number = 0;
 
 
     scanBarcode() {
@@ -69,12 +72,12 @@ export class HomeComponent implements OnInit {
             openSettingsIfPermissionWasPreviouslyDenied: true, // On iOS you can send the user to the settings app if access was previously denied
             presentInRootViewController: true // iOS-only; If you're sure you're not presenting the (non embedded) scanner in a modal, or are experiencing issues with fi. the navigationbar, set this to 'true' and see if it works better for your app (default false).
           }).then((result) => {
-              // Note that this Promise is never invoked when a 'continuousScanCallback' function is provided
-              alert({
-                title: "Scan result",
-                message: "Format: " + result.format + ",\nValue: " + result.text,
-                okButtonText: "OK"
-              });
+              this.productService.sendProduct(result.text, 1).subscribe(
+                  (data)=> {
+                      this.cartItems.push(data);
+                  }
+              );
+              console.log(result);
             }, (errorMessage) => {
               console.log("No scan. " + errorMessage);
             });
@@ -83,8 +86,13 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    onChageQuanity(product: string, quantity:number, shopping_cart) {
+        this.productService.sendProduct(product, quantity, shopping_cart).subscribe();
+    }
+
     logout() {
         this.userService.logout();
+        this.productService.shopping_cart= null;
         this.routerExtensions.navigate(["/login"], { clearHistory: true });
     }
 
@@ -207,6 +215,10 @@ export class HomeComponent implements OnInit {
 
     getTabTranslateX(index: number): number {
         return index * screen.mainScreen.widthDIPs / this.tabList.length - (screen.mainScreen.widthDIPs / 2) + (80 / 2)
+    }
+
+    createCart() {
+        this.productService.createCart().subscribe()
     }
 
     

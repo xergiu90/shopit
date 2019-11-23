@@ -1,3 +1,4 @@
+import { ProductService } from './../shared/products.service';
 import { Component, ElementRef, ViewChild } from "@angular/core";
 import { alert, prompt } from "tns-core-modules/ui/dialogs";
 import { Page } from "tns-core-modules/ui/page";
@@ -19,7 +20,7 @@ export class LoginComponent {
     @ViewChild("password", {static: false}) password: ElementRef;
     @ViewChild("confirmPassword", {static: false}) confirmPassword: ElementRef;
 
-    constructor(private page: Page, private userService: UserService, private routerExtensions: RouterExtensions) {
+    constructor(private page: Page, private userService: UserService, private routerExtensions: RouterExtensions, private productService:ProductService) {
         this.page.actionBarHidden = true;
         this.user = new User();
     }

@@ -1,3 +1,4 @@
+import { ProductService } from './../shared/products.service';
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -31,6 +32,9 @@ import { NativeScriptUIGaugeModule } from "nativescript-ui-gauge/angular";
     ],
     schemas: [
         NO_ERRORS_SCHEMA
+    ],
+    providers: [
+        ProductService
     ]
 })
 export class HomeModule { }

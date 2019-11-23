@@ -3,3 +3,7 @@ export class User {
     password: string;
     confirmPassword: string;
 }
+
+export class Cart {
+    id: number;
+}
