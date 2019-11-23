@@ -17,15 +17,16 @@ export class UserService {
     ) { }
 
     register(user: User) {
-        return this.kinveyUserService.signup({ username: user.email, password: user.password })
+        return this.kinveyUserService.signup({ email: user.email, password: user.password })
             .catch(this.handleErrors);
     }
 
     login(user: User) {
-        return this.http.post(this.url+ '/api/auth/login/', { username: user.email, password: user.password })
+        return this.http.post(this.url+ 'api/auth/login/', { email: user.email, password: user.password })
             .pipe(
                 catchError(this.handleErrors)
             );
+        
     }
 
     logout() {

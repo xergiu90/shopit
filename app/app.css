@@ -10,3 +10,8 @@
 .btn-primary:disabled {
   opacity: 0.5;
 }
+
+@font-face {
+  font-family: 'Font Awesome Solid';
+  src: url('fonts\fa-regular-400.ttf');
+}

@@ -22,8 +22,6 @@ export class LoginComponent {
     constructor(private page: Page, private userService: UserService, private routerExtensions: RouterExtensions) {
         this.page.actionBarHidden = true;
         this.user = new User();
-        this.user.email = "user@nativescript.org";
-        this.user.password = "password";
     }
 
     toggleForm() {
