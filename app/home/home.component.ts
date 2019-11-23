@@ -52,8 +52,8 @@ export class HomeComponent implements OnInit {
         // { text: String.fromCharCode(0xf011), backgroundColor: '#EFECD7', color: '#000' }
     ];
 
-    currentTabIndex: number = 1;
-    defaultSelected: number = 1;
+    currentTabIndex: number = 0;
+    defaultSelected: number = 0;
 
 
     scanBarcode() {
@@ -85,6 +85,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.productService.createCart().subscribe();
     }
 
     onChageQuanity(product: string, quantity:number, shopping_cart) {
@@ -97,10 +98,6 @@ export class HomeComponent implements OnInit {
         this.routerExtensions.navigate(["/login"], { clearHistory: true });
     }
 
-    // logout() {
-    //     this.userService.logout();
-    //     this.routerExtensions.navigate(["/login"], { clearHistory: true });
-    // }
 
     ngAfterViewInit(): void {
         this.initializeTabBar();
@@ -221,10 +218,6 @@ export class HomeComponent implements OnInit {
 
     getTabTranslateX(index: number): number {
         return index * screen.mainScreen.widthDIPs / this.tabList.length - (screen.mainScreen.widthDIPs / 2) + (screen.mainScreen.widthDIPs / 6)
-    }
-
-    createCart() {
-        this.productService.createCart().subscribe()
     }
 
     

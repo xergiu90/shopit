@@ -2,33 +2,32 @@
 <!-- Look in the login folder for the login code. -->
 <ActionBar title="YOUR APP"></ActionBar>
 
-<StackLayout>
-    <Label class="body m-20" [text]="message" textWrap="true"></Label>
-    <Button class="btn btn-primary" text="Create cart" (tap)="createCart()"></Button>
-    <Button class="btn btn-primary" text="Scan product" (tap)="scanBarcode()"></Button>
-    <Button class="btn btn-primary" text="Log out" (tap)="logout()"></Button>
-    
-</StackLayout>
+<!--<StackLayout>-->
+    <!--<Label class="body m-20" [text]="message" textWrap="true"></Label>-->
+    <!--<Button class="btn btn-primary" text="Create cart" (tap)="createCart()"></Button>-->
+    <!--<Button class="btn btn-primary" text="Scan product" (tap)="scanBarcode()"></Button>-->
+    <!--<Button class="btn btn-primary" text="Log out" (tap)="logout()"></Button>-->
+    <!---->
+<!--</StackLayout>-->
 
 
     <GridLayout>
         <Tabs #tabs [selectedIndex]="defaultSelected" (selectedIndexChanged)="onSelectedIndexChanged($event)">
             <TabContentItem [backgroundColor]="tabList[0].backgroundColor">
                 <StackLayout>
-                    <Label text="Bottom Nav Content 1" class="h1 text-center p-t-20"></Label>
+                    <Label text="History" class="h1 text-center p-t-20"></Label>
                 </StackLayout>
             </TabContentItem>
 
             <TabContentItem [backgroundColor]="tabList[1].backgroundColor">
                 <StackLayout>
-                    <Label class="body m-20" [text]="message" textWrap="true"></Label>
-                    <Button class="btn btn-primary" text="Create cart" (tap)="createCart()"></Button>
+                    <Label class="body m-20" [text]="message" textWrap="true" ></Label>
                     <Button class="btn btn-primary" text="Scan product" (tap)="scanBarcode()"></Button>
                     <Button class="btn btn-primary" text="Log out" (tap)="logout()"></Button>
                 </StackLayout>
             </TabContentItem>
 
-            <TabContentItem [backgroundColor]="tabList[2].backgroundColor">
+            <TabContentItem [backgroundColor]="tabList[2].backgroundColor" (tap)="logout()">
                 <StackLayout>
                     <StackLayout>
                         
@@ -68,8 +67,8 @@
     </AbsoluteLayout>
 
     <!-- tab contents -->
-    <GridLayout #tabContents *ngFor="let item of tabList; let i = index"
-        [col]="i" marginTop="20" (tap)="onBottomNavTap(i)"
+    <GridLayout #tabContents *ngFor="let item of tabList; let i = index; last as isLast;"
+        [col]="i" marginTop="20" (tap)="isLast?logout():onBottomNavTap(i)"
         verticalAlignment="middle">
         <Label class="fa-regular" [text]="item.text" verticalAlignment="middle"
             horizontalAlignment="center" [color]="item.color" fontSize="20"></Label>
