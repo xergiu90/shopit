@@ -11,6 +11,7 @@ import {catchError, map} from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
+    private url= 'http://ec2-18-216-121-106.us-east-2.compute.amazonaws.com:8080/';
     constructor(private kinveyUserService: KinveyUserService,
                 private http:  HttpClient
     ) { }
@@ -21,7 +22,7 @@ export class UserService {
     }
 
     login(user: User) {
-        return this.http.post('/api/login/', { username: user.email, password: user.password })
+        return this.http.post(this.url+ '/api/auth/login/', { username: user.email, password: user.password })
             .pipe(
                 catchError(this.handleErrors)
             );
