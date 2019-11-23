@@ -12,6 +12,7 @@ import { GridLayout } from "ui/layouts/grid-layout";
 import { PanGestureEventData, GestureStateTypes, GestureEventData } from "ui/gestures";
 import { AnimationCurve } from "ui/enums";
 import { SelectedIndexChangedEventData } from "tns-core-modules/ui/tab-view";
+import { ScrollView, ScrollEventData } from "tns-core-modules/ui/scroll-view";
 
 @Component({
     selector: "app-home",

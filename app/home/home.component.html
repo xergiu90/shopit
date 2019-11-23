@@ -1,14 +1,6 @@
 <!-- This is the home page. -->
 <!-- Look in the login folder for the login code. -->
-<ActionBar title="YOUR APP"></ActionBar>
 
-<StackLayout>
-    <Label class="body m-20" [text]="message" textWrap="true"></Label>
-    <Button class="btn btn-primary" text="Create cart" (tap)="createCart()"></Button>
-    <Button class="btn btn-primary" text="Scan product" (tap)="scanBarcode()"></Button>
-    <Button class="btn btn-primary" text="Log out" (tap)="logout()"></Button>
-    
-</StackLayout>
 
 
     <GridLayout>
@@ -21,17 +13,17 @@
 
             <TabContentItem [backgroundColor]="tabList[1].backgroundColor">
                 <StackLayout>
-                    <Label class="body m-20" [text]="message" textWrap="true"></Label>
-                    <Button class="btn btn-primary" text="Create cart" (tap)="createCart()"></Button>
-                    <Button class="btn btn-primary" text="Scan product" (tap)="scanBarcode()"></Button>
-                    <Button class="btn btn-primary" text="Log out" (tap)="logout()"></Button>
+                    <Image class="logo" src="~/images/logo.png"></Image>
+                    <Button class="btn btn-primary" text="new cart" (tap)="createCart()"></Button>
+                    
                 </StackLayout>
             </TabContentItem>
 
             <TabContentItem [backgroundColor]="tabList[2].backgroundColor">
                 <StackLayout>
                     <StackLayout>
-                        
+                        <Button class="btn btn-primary" text="Scan product" (tap)="scanBarcode()"></Button>
+                        <Button class="btn btn-primary" text="Log out" (tap)="logout()"></Button>
                         
                     </StackLayout>
                 </StackLayout>
@@ -79,5 +71,4 @@
     <GridLayout #dragCircle column="0" colSpan="5" (pan)="onCenterCirclePan($event)"
         verticalAlignment="center" horizontalAlignment="center" height="90"
         width="90" backgroundColor="transparent" borderRadius="45"></GridLayout>
-
 </GridLayout>

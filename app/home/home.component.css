@@ -19,3 +19,10 @@
     background-color: #FDBF00;
     /* text-transform: none; */
 }
+
+.create-card{
+    width: 80%;
+    padding: 50px;
+    height: auto;
+    padding-bottom: -50px;
+}

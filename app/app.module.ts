@@ -1,3 +1,4 @@
+import { ProductService } from './shared/products.service';
 import { NgModule, NgModuleFactoryLoader, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
@@ -34,7 +35,8 @@ import { UserService } from "./shared/user.service";
         LoginComponent
     ],
     providers: [
-        UserService
+        UserService,
+        ProductService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
