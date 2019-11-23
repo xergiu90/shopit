@@ -53,8 +53,8 @@ export class HomeComponent implements OnInit {
         // { text: String.fromCharCode(0xf011), backgroundColor: '#EFECD7', color: '#000' }
     ];
 
-    currentTabIndex: number = 0;
-    defaultSelected: number = 0;
+    currentTabIndex: number = 1;
+    defaultSelected: number = 1;
 
 
     scanBarcode() {
