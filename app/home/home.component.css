@@ -12,3 +12,10 @@
     font-family: 'Font Awesome 5 Free', 'fa-solid-900';
     font-weight: 400;
 }
+
+.btn-primary {
+    margin: 30px 50px;
+    border-radius: 50%;
+    background-color: #FDBF00;
+    /* text-transform: none; */
+}

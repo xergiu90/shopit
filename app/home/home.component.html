@@ -21,29 +21,28 @@
 
             <TabContentItem [backgroundColor]="tabList[1].backgroundColor">
                 <StackLayout>
-                    <StackLayout>
-                        <Label class="body m-20" [text]="message" textWrap="true"></Label>
-                        <Button class="btn btn-primary" text="Create cart" (tap)="createCart()"></Button>
-                        <Button class="btn btn-primary" text="Scan product" (tap)="scanBarcode()"></Button>
-                        <Button class="btn btn-primary" text="Log out" (tap)="logout()"></Button>
-                        
-                    </StackLayout>
+                    <Label class="body m-20" [text]="message" textWrap="true"></Label>
+                    <Button class="btn btn-primary" text="Create cart" (tap)="createCart()"></Button>
+                    <Button class="btn btn-primary" text="Scan product" (tap)="scanBarcode()"></Button>
+                    <Button class="btn btn-primary" text="Log out" (tap)="logout()"></Button>
                 </StackLayout>
             </TabContentItem>
 
             <TabContentItem [backgroundColor]="tabList[2].backgroundColor">
                 <StackLayout>
-                    <Label text="Bottom Nav Content 3" class="h1 text-center p-t-20"></Label>
+                    <StackLayout>
+                        
+                        
+                    </StackLayout>
                 </StackLayout>
             </TabContentItem>
-x
         </Tabs>
     </GridLayout>
 
-<GridLayout height="auto" verticalAlignment="bottom" columns="*, *, *, *, *">
+<GridLayout height="auto" verticalAlignment="bottom" columns="*, *, *">
 
     <!-- base layer -->
-    <AbsoluteLayout col="0" colSpan="5" verticalAlignment="bottom">
+    <AbsoluteLayout col="0" colSpan="3" verticalAlignment="bottom">
         <GridLayout #tabBGContainer columns="auto, 10, auto, 10, auto">
             <GridLayout #leftTabs col="0" colSpan="2" height="80"
                 [backgroundColor]="tabContainer.backgroundColor"

@@ -44,15 +44,16 @@ export class HomeComponent implements OnInit {
         focusColor: '#fff'
     };
     tabList: { text: string, icon?: string, color?: string, backgroundColor: string, fadeColor?: string }[] = [
-        { text: String.fromCharCode(0xf217), backgroundColor: '#5B37B7', color: '#000' },
-        { text: String.fromCharCode(0xf1da), backgroundColor: '#E6A938', color: '#000' },
-        { text: String.fromCharCode(0xf011), backgroundColor: '#C9449D', color: '#000' },
-        { text: String.fromCharCode(0xf1da), backgroundColor: '#E6A938', color: '#000' },
-        { text: String.fromCharCode(0xf011), backgroundColor: '#C9449D', color: '#000' }
+       
+        { text: String.fromCharCode(0xf1da), backgroundColor: '#EFECD7', color: '#000' },  
+        { text: String.fromCharCode(0xf217), backgroundColor: '#EFECD7', color: '#000' },
+        { text: String.fromCharCode(0xf011), backgroundColor: '#EFECD7', color: '#000' }
+        // { text: String.fromCharCode(0xf1da), backgroundColor: '#EFECD7', color: '#000' },
+        // { text: String.fromCharCode(0xf011), backgroundColor: '#EFECD7', color: '#000' }
     ];
 
-    currentTabIndex: number = 0;
-    defaultSelected: number = 0;
+    currentTabIndex: number = 1;
+    defaultSelected: number = 1;
 
 
     scanBarcode() {
@@ -95,6 +96,11 @@ export class HomeComponent implements OnInit {
         this.productService.shopping_cart= null;
         this.routerExtensions.navigate(["/login"], { clearHistory: true });
     }
+
+    // logout() {
+    //     this.userService.logout();
+    //     this.routerExtensions.navigate(["/login"], { clearHistory: true });
+    // }
 
     ngAfterViewInit(): void {
         this.initializeTabBar();
@@ -214,7 +220,7 @@ export class HomeComponent implements OnInit {
     }
 
     getTabTranslateX(index: number): number {
-        return index * screen.mainScreen.widthDIPs / this.tabList.length - (screen.mainScreen.widthDIPs / 2) + (80 / 2)
+        return index * screen.mainScreen.widthDIPs / this.tabList.length - (screen.mainScreen.widthDIPs / 2) + (screen.mainScreen.widthDIPs / 6)
     }
 
     createCart() {
