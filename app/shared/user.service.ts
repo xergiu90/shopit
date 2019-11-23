@@ -6,10 +6,14 @@ import * as Kinvey from "kinvey-nativescript-sdk";
 // TODO: should be imported from kinvey-nativescript-sdk/angular but declaration file is currently missing
 import { UserService as KinveyUserService } from "kinvey-nativescript-sdk/lib/angular";
 import { User } from "./user.model";
+import {HttpClient} from '@angular/common/http';
+import {catchError, map} from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
-    constructor(private kinveyUserService: KinveyUserService) { }
+    constructor(private kinveyUserService: KinveyUserService,
+                private http:  HttpClient
+    ) { }
 
     register(user: User) {
         return this.kinveyUserService.signup({ username: user.email, password: user.password })
@@ -17,8 +21,10 @@ export class UserService {
     }
 
     login(user: User) {
-        return this.kinveyUserService.login(user.email, user.password)
-            .catch(this.handleErrors);
+        return this.http.post('/api/login/', { username: user.email, password: user.password })
+            .pipe(
+                catchError(this.handleErrors)
+            );
     }
 
     logout() {

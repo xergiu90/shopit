@@ -46,14 +46,16 @@ export class LoginComponent {
 
     login() {
         this.userService.login(this.user)
-            .then(() => {
+            .subscribe(() => {
                 this.processing = false;
                 this.routerExtensions.navigate(["/home"], { clearHistory: true });
-            })
-            .catch(() => {
+
+            },
+        ( error)=> {
                 this.processing = false;
-                this.alert("Unfortunately we could not find your account.");
-            });
+                this.alert("Unfortunately we could not find your account");
+            })
+
     }
 
     register() {
