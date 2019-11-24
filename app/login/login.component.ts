@@ -25,16 +25,11 @@ export class LoginComponent {
         this.user = new User();
     }
 
-
-    public toggleCheck() {
-      this.FirstCheckBox.nativeElement.toggle();
-    }
-  
-    public getCheckProp() {
-      console.log(
-        'checked prop value = ' + this.FirstCheckBox.nativeElement.checked
-      );
-    }
+    // public getCheckProp() {
+    //   console.log(
+    //     'checked prop value = ' + this.FirstCheckBox.nativeElement.checked
+    //   );
+    // }
 
     toggleForm() {
         this.isLoggingIn = !this.isLoggingIn;

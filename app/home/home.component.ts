@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
     @ViewChildren('tabContents', { read: ElementRef }) tabContents: QueryList<ElementRef>;
     animationCurve = AnimationCurve.cubicBezier(.38, .47, 0, 1);
     prevDeltaX: number = 0;
+    isStaff= this.userService.isStaff;
 
     public cartItems= [];
 
@@ -74,12 +75,20 @@ export class HomeComponent implements OnInit {
             openSettingsIfPermissionWasPreviouslyDenied: true, // On iOS you can send the user to the settings app if access was previously denied
             presentInRootViewController: true // iOS-only; If you're sure you're not presenting the (non embedded) scanner in a modal, or are experiencing issues with fi. the navigationbar, set this to 'true' and see if it works better for your app (default false).
           }).then((result) => {
-              this.productService.sendProduct(result.text, 1).subscribe(
-                  (data)=> {
-                      this.cartItems.push(data);
-                  }
-              );
-              console.log(result);
+
+              if(this.isStaff){
+                    this.productService.addToStock(result.text).subscribe(
+                        (data)=> {
+                            alert(data);
+                        }
+                    );
+              } else {
+                  this.productService.sendProduct(result.text, 1).subscribe(
+                      (data)=> {
+                          this.cartItems.push(data);
+                      }
+                  );
+              }
             }, (errorMessage) => {
               console.log("No scan. " + errorMessage);
             });

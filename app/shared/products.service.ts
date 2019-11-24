@@ -11,6 +11,13 @@ export class ProductService {
 
     }
 
+    addToStock( product: string){
+        return this.http.post(this.url+ 'api/products/', { product })
+        .pipe(
+            catchError(this.handleErrors)
+        );
+    }
+
     sendProduct( product: string, quantity:number, shopping_cart=this.shopping_cart){
         return this.http.post(this.url+ 'api/cart-item/', { product, quantity, shopping_cart })
         .pipe(

@@ -12,6 +12,7 @@ import {catchError, map} from 'rxjs/operators';
 @Injectable()
 export class UserService {
     private url= 'http://ec2-18-216-121-106.us-east-2.compute.amazonaws.com:8080/';
+    public isStaff= false;
     constructor(private kinveyUserService: KinveyUserService,
                 private http:  HttpClient
     ) { }
@@ -24,14 +25,19 @@ export class UserService {
     login(user: User) {
         return this.http.post(this.url+ 'api/auth/login/', { email: user.email, password: user.password })
             .pipe(
+                map(
+                    (data: User) => {
+                        this.isStaff= data.is_staff;
+                        return data;
+                    }
+                ),
                 catchError(this.handleErrors)
             );
         
     }
 
     logout() {
-        return this.kinveyUserService.logout()
-            .catch(this.handleErrors);
+        this.isStaff= false;
     }
 
     resetPassword(email) {

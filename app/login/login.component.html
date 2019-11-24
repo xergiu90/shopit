@@ -32,9 +32,9 @@
             </GridLayout>
         </PreviousNextView>
 
-        <StackLayout>
-            <CheckBox #CB1 class="checkbox" text="Is staff" (tap)="getCheckProp()" checked="false"></CheckBox>
-        </StackLayout>
+        <!--<StackLayout>-->
+            <!--<CheckBox #CB1 class="checkbox" text="Is staff" (tap)="getCheckProp()" checked="false"></CheckBox>-->
+        <!--</StackLayout>-->
 
         <Button [text]="isLoggingIn ? 'Log In' : 'Sign Up'" [isEnabled]="!processing"
             (tap)="submit()" class="btn btn-primary m-t-20"></Button>

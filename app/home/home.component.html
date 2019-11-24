@@ -14,7 +14,7 @@
         <Tabs #tabs [selectedIndex]="defaultSelected" (selectedIndexChanged)="onSelectedIndexChanged($event)">
             <TabContentItem [backgroundColor]="tabList[0].backgroundColor">
                 <StackLayout>
-                    <Label text="History" class="h1 text-center p-t-20"></Label>
+                    <Label text="{{isStaff? 'Notifications': 'History'}}" class="h1 text-center p-t-20"></Label>
                 </StackLayout>
             </TabContentItem>
 
@@ -22,7 +22,7 @@
                 <StackLayout>
                     <!-- <Image class="logo" src="~/images/logo.png"></Image> -->
                     <Label text="Your cart" class="welcome h1 text-center p-t-20"></Label>
-                    <Button class="btn btn-primary" text="Scan product" (tap)="scanBarcode()"></Button>
+                    <Button class="btn btn-primary" text="{{isStaff? 'Add to stock': 'Scan product'}}" (tap)="scanBarcode()"></Button>
                     <!-- <Button class="btn btn-primary" text="new cart" (tap)="createCart()"></Button> -->
                     
                 </StackLayout>

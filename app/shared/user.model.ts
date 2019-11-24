@@ -1,7 +1,7 @@
 export class User {
     email: string;
     password: string;
-    confirmPassword: string;
+    is_staff: boolean;
 }
 
 export class Cart {
