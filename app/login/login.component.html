@@ -16,7 +16,10 @@
                         hint="Password" secure="true" [(ngModel)]="user.password"
                         [returnKeyType]="isLoggingIn ? 'done' : 'next'"
                         (returnPress)="focusConfirmPassword()"></TextField>
+                    
                 </StackLayout>
+                
+               
 
                 <StackLayout row="2" *ngIf="!isLoggingIn" class="input-field">
                     <TextField #confirmPassword class="input" [isEnabled]="!processing"
@@ -29,16 +32,20 @@
             </GridLayout>
         </PreviousNextView>
 
+        <StackLayout>
+            <CheckBox #CB1 class="checkbox" text="Is staff" (tap)="getCheckProp()" checked="false"></CheckBox>
+        </StackLayout>
+
         <Button [text]="isLoggingIn ? 'Log In' : 'Sign Up'" [isEnabled]="!processing"
             (tap)="submit()" class="btn btn-primary m-t-20"></Button>
-        <Label *ngIf="isLoggingIn" text="Forgot your password?" class="login-label"
-            (tap)="forgotPassword()"></Label>
+        <!-- <Label *ngIf="isLoggingIn" text="Forgot your password?" class="login-label"
+            (tap)="forgotPassword()"></Label> -->
     </StackLayout>
 
-    <Label class="login-label sign-up-label" (tap)="toggleForm()">
+    <!-- <Label class="login-label sign-up-label" (tap)="toggleForm()">
         <FormattedString>
             <Span [text]="isLoggingIn ? 'Don’t have an account? ' : 'Back to Login'"></Span>
             <Span [text]="isLoggingIn ? 'Sign up' : ''" class="bold"></Span>
         </FormattedString>
-    </Label>
+    </Label> -->
 </FlexboxLayout>

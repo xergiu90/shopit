@@ -1,12 +1,14 @@
+import { ProductComponent } from './home/product/product.component';
 import { NgModule } from "@angular/core";
 import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-    { path: "", redirectTo: "/home", pathMatch: "full" },
+    { path: "", redirectTo: "/login", pathMatch: "full" },
     { path: "login", component: LoginComponent },
-    { path: "home", loadChildren: "./home/home.module#HomeModule" }
+    { path: "home", loadChildren: "./home/home.module#HomeModule" },
+    { path: "test", component: ProductComponent },
 ];
 
 @NgModule({

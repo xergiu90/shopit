@@ -10,6 +10,10 @@
   vertical-align: middle;
 }
 
+.checkbox{
+
+}
+
 /* .logo {
   margin-bottom: 12;
   height: 90;
@@ -25,7 +29,7 @@
 }
 
 .input-field {
-  margin-bottom: 25;
+  margin-bottom: 20px;
   height: 150px;
   background-color: white;
   color: #697C86; 

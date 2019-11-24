@@ -20,8 +20,10 @@
 
             <TabContentItem [backgroundColor]="tabList[1].backgroundColor">
                 <StackLayout>
-                    <Image class="logo" src="~/images/logo.png"></Image>
-                    <Button class="btn btn-primary" text="new cart" (tap)="createCart()"></Button>
+                    <!-- <Image class="logo" src="~/images/logo.png"></Image> -->
+                    <Label text="Your cart" class="welcome h1 text-center p-t-20"></Label>
+                    <Button class="btn btn-primary" text="Scan product" (tap)="scanBarcode()"></Button>
+                    <!-- <Button class="btn btn-primary" text="new cart" (tap)="createCart()"></Button> -->
                     
                 </StackLayout>
             </TabContentItem>
@@ -29,7 +31,6 @@
             <TabContentItem [backgroundColor]="tabList[2].backgroundColor" (tap)="logout()">
                 <StackLayout>
                     <StackLayout>
-                        <Button class="btn btn-primary" text="Scan product" (tap)="scanBarcode()"></Button>
                         <Button class="btn btn-primary" text="Log out" (tap)="logout()"></Button>
                         
                     </StackLayout>

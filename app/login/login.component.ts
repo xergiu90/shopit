@@ -19,10 +19,21 @@ export class LoginComponent {
     processing = false;
     @ViewChild("password", {static: false}) password: ElementRef;
     @ViewChild("confirmPassword", {static: false}) confirmPassword: ElementRef;
-
+    @ViewChild('CB1', {static: false}) FirstCheckBox: ElementRef;
     constructor(private page: Page, private userService: UserService, private routerExtensions: RouterExtensions, private productService:ProductService) {
         this.page.actionBarHidden = true;
         this.user = new User();
+    }
+
+
+    public toggleCheck() {
+      this.FirstCheckBox.nativeElement.toggle();
+    }
+  
+    public getCheckProp() {
+      console.log(
+        'checked prop value = ' + this.FirstCheckBox.nativeElement.checked
+      );
     }
 
     toggleForm() {

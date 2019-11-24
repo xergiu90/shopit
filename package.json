@@ -25,6 +25,7 @@
         "@nativescript/angular": "8.20.1",
         "@nativescript/core": "6.2.1",
         "@nativescript/theme": "2.2.0",
+        "@nstudio/nativescript-checkbox": "^1.0.0",
         "@progress-nativechat/nativescript-nativechat": "2.0.4",
         "kinvey-nativescript-sdk": "4.2.5",
         "nativescript-accelerometer": "3.0.0",
